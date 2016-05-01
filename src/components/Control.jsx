@@ -41,7 +41,7 @@ class Control extends Component {
             $.ajax({
                 url: HOST_URL + "/command.html",
                 method: "POST",
-                data: "wm_command=" + opt.command + "&" + opt.name + "=" + this.parsePercent(opt.min, opt.max, value)
+                data: "wm_command=" + opt.command + "&" + opt.name + "=" + value
             });
         }
     }
@@ -76,7 +76,7 @@ class Control extends Component {
 
     createSlider(opt, idx) {
         var changeHandler = this.sendChange(opt);
-        return <Slider key={idx} style={this.styles.slider} onChange={changeHandler} value={this.formatPercent(opt.min, opt.max, this.props.playbackStatus[opt.name])} />;
+        return <Slider key={idx} style={this.styles.slider} onChange={changeHandler} value={this.props.playbackStatus[opt.name]} min={opt.min || 0} max={opt.max || 100}/>;
     }
 
     parsePercent(min, max, percent) {
