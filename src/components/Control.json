@@ -1,0 +1,35 @@
+{
+    "layout": {
+        "middle": [
+            [
+                { "type": "text", "name": "title" }
+            ],
+            [
+                { "type": "icon", "command": 921, "name": "prev", "icon": "skip_previous" },
+                { "type": "icon", "command": 899, "name": "rewind", "icon": "fast_rewind" },
+                { "type": "icon", "command": 889, "name": "play", "icon": "play_arrow" },
+                { "type": "icon", "command": 889, "name": "pause" },
+                { "type": "icon", "command": 900, "name": "forward", "icon": "fast_forward" },
+                { "type": "icon", "command": 922, "name": "next", "icon": "skip_next" }
+            ],
+            [
+                { "type": "text", "name": "timeText" },
+                { "type": "text", "text": " / " },
+                { "type": "text", "name": "durationText" }
+            ],
+            [
+                { "type": "icon", "command": 909, "name": "mute", "icon": "volume_off" },
+                { "type": "icon", "command": 909, "name": "unmute", "icon": "volume_up" }
+            ],
+            [
+                { "type": "slider", "name": "volume", "min": 0, "max": 100 }
+            ]
+        ],
+
+        "bottom": [
+            [
+                { "type": "icon", "command": 830, "name": "fullscreen" }
+            ]
+        ]
+    }
+}

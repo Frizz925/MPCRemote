@@ -1,0 +1,14 @@
+body {
+    background: #000;
+}
+
+#app {
+    text-align: center;
+    color: #fff;
+}
+
+.playback.material-icons {
+    cursor: pointer;
+    padding: 8px;
+}
+
