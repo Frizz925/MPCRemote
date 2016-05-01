@@ -52,7 +52,10 @@ function displayStatus(status) {
     store.dispatch({
         type: "UPDATE_STATE",
         state: {
-            playbackStatus: status,
+            playbackStatus: {
+                ...status,
+                percent: status.time / status.duration * 100
+            },
             playbackState: {
                 play: status.state !== "Playing",
                 pause: status.state !== "Paused",

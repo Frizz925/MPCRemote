@@ -19,11 +19,10 @@ class Control extends Component {
             bottom: 0
         },
         slider: {
-            position: "absolute",
-            width: "80%",
-            left: "50%",
-            transform: "translateX(-50%)",
-            marginTop: 0
+            marginTop: 0,
+            marginBottom: "5px",
+            paddingLeft: "10%",
+            paddingRight: "10%"
         }
     }
 
@@ -42,7 +41,7 @@ class Control extends Component {
             $.ajax({
                 url: HOST_URL + "/command.html",
                 method: "POST",
-                data: "wm_command=-2&" + opt.name + "=" + this.parsePercent(opt.min, opt.max, value)
+                data: "wm_command=" + opt.command + "&" + opt.name + "=" + this.parsePercent(opt.min, opt.max, value)
             });
         }
     }
@@ -66,14 +65,18 @@ class Control extends Component {
     createPlaybackElement(opt, idx) {
         var elState = this.props.playbackState[opt.name];
         var clickHandler = this.sendCommand(opt.command);
-        var changeHandler = this.sendChange(opt);
         if (elState === undefined || elState) {
             return opt.type == "icon" ? <i key={idx} className="playback material-icons" onClick={clickHandler}>{opt.icon || opt.name}</i>
-                : opt.type == "slider" ? <Slider key={idx} style={this.styles.slider} onChange={changeHandler} value={this.formatPercent(opt.min, opt.max, this.props.playbackStatus[opt.name])} />
+                : opt.type == "slider" ? this.createSlider(opt, idx)
                 : <span key={idx}>{this.props.playbackStatus[opt.name] || opt.text || ""}</span>
         } else {
             return null;
         }
+    }
+
+    createSlider(opt, idx) {
+        var changeHandler = this.sendChange(opt);
+        return <Slider key={idx} style={this.styles.slider} onChange={changeHandler} value={this.formatPercent(opt.min, opt.max, this.props.playbackStatus[opt.name])} />;
     }
 
     parsePercent(min, max, percent) {

@@ -9,6 +9,7 @@ body {
 
 .playback.material-icons {
     cursor: pointer;
+    font-size: 36px;
     padding: 8px;
 }
 
